@@ -1,0 +1,50 @@
+﻿@model MVCMovieDB.Models.Customer
+    
+@{
+    ViewBag.Title = "CustomerDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="form-horizontal">
+    <table class="table" style="margin-top: 50px">
+        <tr>
+            <td>Customer Id:</td>
+            <td>@Model.Id</td>
+        </tr>
+
+        <tr>
+            <td>Subscribed?:</td>
+            <td>@Model.IsSubscribedToNewsLetter</td>
+        </tr>
+        <tr>
+            @{
+                if (Model.IsSubscribedToNewsLetter == false)
+                {
+                    <td>Subscription Type:</td>
+                    <td>Customer has no subscription</td>
+                }
+                else
+                {
+                    <td>Subscription Type:</td>
+                    <td>@Model.MembershipTypeId</td>
+                }
+            }
+        </tr>
+        <tr>
+            @{
+                if (Model.Birthdate == null)
+                {
+                    <td>Birtday:</td>
+                    <td>No birthday in system</td>
+                }
+                else
+                {
+                    <td>Birthday:</td>
+                    <td>@Model.Birthdate</td>
+                }
+            }
+        </tr>
+    </table>
+</div>
+

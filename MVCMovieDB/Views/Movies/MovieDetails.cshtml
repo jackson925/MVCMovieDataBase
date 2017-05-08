@@ -1,0 +1,50 @@
+﻿@model MVCMovieDB.Models.Movie
+@{
+    ViewBag.Title = "MovieDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MovieDetails</h2>
+
+<div id="MDetailsTable">
+
+    <table class="table table-bordered">
+        <tr>
+            <th>
+               Name
+            </th>
+            <th>
+               Genre
+            </th>
+            <th>
+               Date Released
+            </th>
+            <th>
+                Date Added
+            </th>
+            <th>
+               Stock
+            </th>
+        </tr>
+        <tr>
+            <td>@Model.Name</td>
+        
+       
+            <td>@Model.Genre</td>
+        
+        
+            <td>@Model.ReleaseDate</td>
+        
+        
+            <td>@Model.DateAdded</td>
+        
+        
+            <td>@Model.Stock</td>
+        </tr>
+
+
+
+
+    </table>
+ 
+</div>

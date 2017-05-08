@@ -1,0 +1,26 @@
+﻿@model List<MVCMovieDB.Models.Customer>
+@{
+    ViewBag.Title = "CustomerIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+<div class="form-horizontal">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Discount Rate</th>
+            </tr>
+        </thead>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name, "Edit", customer)</td>
+                    <td>@customer.MembershipType.MembershipName</td>
+                </tr>
+            }
+    
+    </table>
+</div>
