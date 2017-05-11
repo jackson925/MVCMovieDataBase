@@ -13,6 +13,7 @@ namespace MVCMovieDB.Models
         [Required]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "Movie Genre")]
         public string Genre { get; set; }
         [Required]
         [Display(Name = "Date Released")]
@@ -20,6 +21,7 @@ namespace MVCMovieDB.Models
         [Required]
         public DateTime DateAdded { get; set; }
         [Required]
+        [Range(1,20)]
         [Display(Name = "Number in Stock")]
         public int Stock { get; set; }
 
