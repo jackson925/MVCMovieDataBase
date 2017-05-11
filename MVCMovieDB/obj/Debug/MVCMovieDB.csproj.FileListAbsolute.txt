@@ -40,7 +40,10 @@ D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Microsoft.Owin.Security.Twitter.dll
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Microsoft.Web.Infrastructure.dll
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Newtonsoft.Json.dll
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Owin.dll
+D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Net.Http.Formatting.dll
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Helpers.dll
+D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Http.dll
+D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Http.WebHost.dll
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Mvc.dll
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Optimization.dll
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Razor.dll
@@ -54,6 +57,9 @@ D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Microsoft.AI.Web.xml
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Microsoft.AI.WindowsServer.xml
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Microsoft.ApplicationInsights.xml
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Net.Http.Formatting.xml
+D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Http.xml
+D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Http.WebHost.xml
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Helpers.xml
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Mvc.xml
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\System.Web.Optimization.xml
@@ -78,10 +84,7 @@ D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Microsoft.Owin.Security.Google.xml
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Microsoft.Owin.Security.Twitter.xml
 D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.csprojResolveAssemblyReference.cache
-D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.dll
-D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.pdb
 D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.Migrations.InitialModel.resources
-D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.csproj.GenerateResource.Cache
 D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.Migrations.AddISSubscribedToCustomer.resources
 D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.Migrations.AddMembershipType.resources
 D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.Migrations.PopulateMembershipTypes.resources
@@ -97,3 +100,9 @@ D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.Migrations.addmigratio
 D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.Migrations.UpdateMovieDates.resources
 D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.Migrations.UpdateMembershipType.resources
 D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.Migrations.AddRequirementstoMovieClass.resources
+D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.Migrations.UpdateMovieValidation.resources
+D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.csproj.GenerateResource.Cache
+D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.dll
+D:\DevProjects\MVCMovieDB\MVCMovieDB\obj\Debug\MVCMovieDB.pdb
+D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\AutoMapper.dll
+D:\DevProjects\MVCMovieDB\MVCMovieDB\bin\AutoMapper.xml

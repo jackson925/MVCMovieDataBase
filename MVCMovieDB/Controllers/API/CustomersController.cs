@@ -1,4 +1,6 @@
-﻿using MVCMovieDB.Models;
+﻿using AutoMapper;
+using MVCMovieDB.DTOs;
+using MVCMovieDB.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,35 +18,44 @@ namespace MVCMovieDB.Controllers.API
         {
             _context = new ApplicationDbContext();
         }
+
         //GET /api/customers
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerDTO> GetCustomers()
         {
-            return _context.Customers.ToList();
+            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDTO>);
         }
+
         //GET /api/customer/1
-        public Customer GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return customer;
-        } 
+            return Ok(Mapper.Map<Customer,CustomerDTO>(customer));
+        }
+
         //POST /api/customers
         [HttpPost]
-        public Customer CreateCustomer(Customer customer)
+        public IHttpActionResult CreateCustomer(CustomerDTO customerDTO)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
+            var customer = Mapper.Map<CustomerDTO, Customer>(customerDTO);
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
-            return customer;
+            customerDTO.Id = customer.Id;
+
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDTO);
+
+        
         }
+
         //PUT /api/customer/1
         [HttpPut]
-        public void UpdateCustomer(int id, Customer customer)
+        public void UpdateCustomer(int id, CustomerDTO customerDTO)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -53,11 +64,8 @@ namespace MVCMovieDB.Controllers.API
             if (customerInDB == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            customerInDB.Name = customer.Name;
-            customerInDB.Birthdate = customer.Birthdate;
-            customerInDB.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
-            customerInDB.MembershipTypeId = customer.MembershipTypeId;
-
+            Mapper.Map(customerDTO, customerInDB);
+           
             _context.SaveChanges();
         }
         
