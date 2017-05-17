@@ -1,0 +1,49 @@
+﻿@model List<MVCMovieDB.Models.Movie>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2> Movie List </h2>
+
+<div class="form-horizontal">
+
+    <table id="movietable" class="table table-hover">
+        <thead>
+            <tr>
+                <th> Movie </th>
+                <th> Genre </th>
+               
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#movietable").DataTable({
+                ajax: {
+                    url: "/api/movies",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+
+                    },
+
+                    {
+                        data: "genre"
+                    }
+                ]
+
+            });
+        });
+    </script>
+
+}
