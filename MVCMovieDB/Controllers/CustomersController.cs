@@ -10,6 +10,7 @@ using MVCMovieDB.ViewModels;
 
 namespace MVCMovieDB.Controllers
 {
+    [Authorize(Roles = RoleName.CanManageMovies)]
     public class CustomersController : Controller
     {
         private ApplicationDbContext _context;
@@ -23,11 +24,12 @@ namespace MVCMovieDB.Controllers
             _context.Dispose();
         }
         // GET: Customers
+        
         public ActionResult CustomerIndex()
         {
-            var customers = _context.Customers.Include(v => v.MembershipType).ToList();
+            //var customers = _context.Customers.Include(v => v.MembershipType).ToList();
 
-            return View(customers);
+            return View();
         }
         public ActionResult CustomerDetails(Customer customer)
         {
@@ -61,8 +63,22 @@ namespace MVCMovieDB.Controllers
                     MembershipTypes = _context.MembershipTypes.ToList()
 
                 };
+                if (customer.Id == 0)
+                    _context.Customers.Add(customer);
+                else
+                {
+                    var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
 
-                return View("customerForm", viewModel);
+                    customerInDb.Name = customer.Name;
+                    customerInDb.Birthdate = customer.Birthdate;
+                    customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+                    customerInDb.MembershipType = customer.MembershipType;
+                    
+                    
+                }
+                _context.SaveChanges();
+
+                return View("CustomerIndex", "Customers");
             }
             if (customer.Id == 0)
             {
@@ -81,8 +97,10 @@ namespace MVCMovieDB.Controllers
 
             return RedirectToAction("CustomerIndex", "Customers");
         }
-        public ActionResult Edit(Customer customer)
+        public ActionResult Edit(int id)
         {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
             if(customer == null)
             {
                 return HttpNotFound();
@@ -96,5 +114,6 @@ namespace MVCMovieDB.Controllers
             };
             return View("CustomerForm", viewModel);
         }
+        
     }
 }

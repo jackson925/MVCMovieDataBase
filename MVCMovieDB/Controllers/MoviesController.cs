@@ -22,14 +22,15 @@ namespace MVCMovieDB.Controllers
             _context.Dispose();
         }
 
-        // GET: Movies/Random
+        // GET: Movies/
+  
         public ActionResult MoviesList()
         {
-
-            var movies = _context.Movies.ToList();
-
-            return View(movies);
+            if(User.IsInRole(RoleName.CanManageMovies))
+                 return View("MoviesList");
+            return View("ReadOnlyMoviesList");
         }
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult MovieDetails(Movie movie)
         {
             if(movie == null)
@@ -39,6 +40,7 @@ namespace MVCMovieDB.Controllers
 
             return View(movie);
         }
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var movie = new Movie();
@@ -76,10 +78,11 @@ namespace MVCMovieDB.Controllers
             return RedirectToAction("MoviesList", "Movies");
         }
 
-
-        public ActionResult Edit(Movie movie)
+        [Authorize(Roles = RoleName.CanManageMovies)]
+        public ActionResult Edit(int id)
         {
-          
+            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
+
                if (movie == null)
                 return HttpNotFound();
 

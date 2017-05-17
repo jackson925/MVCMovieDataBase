@@ -65,7 +65,7 @@ namespace MVCMovieDB.Controllers.API
         }
         //DELETE /api/movies/1
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public void Delete(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
 

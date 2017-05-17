@@ -11,31 +11,44 @@
         <thead>
             <tr>
                 <th>Customer</th>
-                <th>Discount Rate</th>
+                <th>Membership Type</th>
                 <th>Delete</th>
             </tr>
         </thead>
-            @foreach (var customer in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(customer.Name, "Edit", customer)</td>
-                    <td>@customer.MembershipType.MembershipName</td>
-                    <td>
-                        <button data-customer-id="@customer.Id" class="btn btn-link js-delete">Delete</button>
-                    </td>
-
-                </tr>
-            }
-    
+        <tbody>
+        </tbody>
     </table>
+    <a href='@Url.Action("New", "Customers")' class="btn btn-primary">Add New Customer</a>
 </div>
 @section scripts
 {
     <script>
         $(document).ready(function () {
-            $("#customers").DataTable();
+           var table = $("#customers").DataTable({
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function(data, type, customer) {
+                            return "<a href='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
 
+                        }
+                    },
+                    {
+                        data: "membershipType.membershipName"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        }
+                    }
 
+                ]
+            });
 
             $("#customers").on("click", ".js-delete", function () {
                 var button = $(this);
@@ -46,7 +59,9 @@
                           url: "/api/customers/" + button.attr("data-customer-id"),
                           method: "DELETE",
                           success: function () {
-                              button.parents("tr").remove();
+                              table.row(button.parents("tr"))
+                              .remove()
+                              .draw();
                           }   
                       });  
                     }
